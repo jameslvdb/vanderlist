@@ -11,5 +11,9 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "enforces email uniqueness" do
+    create(:user)
+    user = build(:user)
+    expect(user).to_not be_valid
+  end
 end
