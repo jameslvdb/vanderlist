@@ -26,5 +26,20 @@ RSpec.describe "Registrations", type: :request do
       expect(response.body).to include("You have successfully registered.")
       expect(response).to have_http_status(:success)
     end
+
+    it "does not create a User when passwords do not match" do
+      expect {
+        post "/registration", params: {
+          user: {
+            email: "user@example.com",
+            password: "password",
+            password_confirmation: "wrongpassword"
+          }
+        }
+      }.to_not change { User.count }
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response.body).to include("Password confirmation doesn&#39;t match Password")
+    end
   end
 end
