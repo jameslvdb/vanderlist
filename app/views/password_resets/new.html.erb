@@ -1,2 +1,16 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<section class="section">
+  <h1 class="is-size-3">
+    <strong>
+      Reset Your Password
+    </strong>
+  </h1>
+  <%= form_with model: @user, url: password_reset_path do |form| %>
+    <div>
+      <%= form.label :email, style: "display: block" %>
+      <%= form.email_field :email %>
+    </div>
+    <div>
+      <%= form.submit "Reset password" %>
+    </div>
+  <% end %>
+</section>
