@@ -1,11 +1,29 @@
-<h1>Registrations#new</h1>
-<p>Find me in app/views/registrations/new.html.erb</p>
-<div>
+<section class="section">
   <%= form_with model: @user, url: registration_path do |form| %>
     <% if form.object.errors.any? %>
-      <% form.object.errors.full_messages.each do |message| %>
-        <p class="has-text-danger"><%= message %></p>
-      <% end %>
+      <div style="color: red">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
+    <div>
+      <%= form.label :email, style: "display: block" %>
+      <%= form.email_field :email %>
+    </div>
+    <div>
+      <%= form.label :password, style: "display: block" %>
+      <%= form.password_field :password %>
+    </div>
+    <div>
+      <%= form.label :password_confirmation, style: "display: block" %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
   <% end %>
-</div>
+</section>
