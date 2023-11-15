@@ -80,6 +80,7 @@ GEM
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.19)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -293,6 +294,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt (~> 3.1.7)
   bootsnap
   cssbundling-rails
   debug
