@@ -8,7 +8,7 @@
     <% if form.object.errors.any? %>
       <div style="color: red">
         <ul>
-          <% task.errors.each do |error| %>
+          <% form.object.errors.each do |error| %>
             <li><%= error.full_message %></li>
           <% end %>
         </ul>
