@@ -1,2 +1,11 @@
 <h1>Registrations#new</h1>
 <p>Find me in app/views/registrations/new.html.erb</p>
+<div>
+  <%= form_with model: @user, url: registration_path do |form| %>
+    <% if form.object.errors.any? %>
+      <% form.object.errors.full_messages.each do |message| %>
+        <p class="has-text-danger"><%= message %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
