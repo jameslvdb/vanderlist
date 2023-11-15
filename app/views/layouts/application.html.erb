@@ -5,12 +5,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <p class="title">Vanderlist</p>
+        </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% if user_signed_in? %>
+              <%= link_to "Edit Password", edit_password_path %>
+              <%= button_to "Log out", session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Sign Up", new_registration_path, class: "button is-link" %>
+              <%= link_to "Log in", new_session_path, class: "button is-light" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
